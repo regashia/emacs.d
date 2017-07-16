@@ -51,6 +51,11 @@ locate PACKAGE."
  ("M-DEL" . mark-paragraph))
 
 
+;;; EditorConfig
+(when (maybe-require-package 'editorconfig)
+  (editorconfig-mode 1))
+
+
 ;;; Final
 (when (file-exists-p custom-file)
   (load custom-file))
