@@ -5,9 +5,9 @@
 ;;; package
 (require 'package)
 (setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-	("melpa" . "https://melpa.org/packages/")
-	("org" . "http://orgmode.org/elpa/")))
+  '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")
+     ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 (defun require-package (package &optional min-version no-refresh)
@@ -15,12 +15,12 @@
 If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
   (if (package-installed-p package min-version)
-      t
+    t
     (if (or (assoc package package-archive-contents) no-refresh)
-        (if (boundp 'package-selected-packages)
-            ;; Record this as a package the user installed explicitly
-            (package-install package nil)
-          (package-install package))
+      (if (boundp 'package-selected-packages)
+        ;; Record this as a package the user installed explicitly
+        (package-install package nil)
+        (package-install package))
       (progn
         (package-refresh-contents)
         (require-package package min-version t)))))
@@ -32,10 +32,10 @@ Optionally require MIN-VERSION.  If NO-REFRESH is non-nil, the
 available package lists will not be re-downloaded in order to
 locate PACKAGE."
   (condition-case err
-      (require-package package min-version no-refresh)
+    (require-package package min-version no-refresh)
     (error
-     (message "Couldn't install optional package `%s': %S" package err)
-     nil)))
+      (message "Couldn't install optional package `%s': %S" package err)
+      nil)))
 
 
 ;;; bind-key
@@ -45,10 +45,10 @@ locate PACKAGE."
 ;;; Editing utils
 ;; Unix style C-h
 (bind-keys*
- ("C-h" . backward-delete-char-untabify)
- ("M-h" . backward-kill-word)
- ("DEL" . help-for-help)
- ("M-DEL" . mark-paragraph))
+  ("C-h" . backward-delete-char-untabify)
+  ("M-h" . backward-kill-word)
+  ("DEL" . help-for-help)
+  ("M-DEL" . mark-paragraph))
 
 
 ;;; EditorConfig
