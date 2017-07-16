@@ -42,6 +42,15 @@ locate PACKAGE."
 (require-package 'bind-key)
 
 
+;;; Editing utils
+;; Unix style C-h
+(bind-keys*
+ ("C-h" . backward-delete-char-untabify)
+ ("M-h" . backward-kill-word)
+ ("DEL" . help-for-help)
+ ("M-DEL" . mark-paragraph))
+
+
 ;;; Final
 (when (file-exists-p custom-file)
   (load custom-file))
