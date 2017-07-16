@@ -56,6 +56,11 @@ locate PACKAGE."
   (editorconfig-mode 1))
 
 
+;;; Git
+(when (maybe-require-package 'magit)
+  (bind-key "C-c g" 'magit-status))
+
+
 ;;; Final
 (when (file-exists-p custom-file)
   (load custom-file))
