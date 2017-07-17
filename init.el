@@ -52,7 +52,7 @@ locate PACKAGE."
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
-  (editorconfig-mode 1))
+  (editorconfig-mode))
 
 
 ;;; Git
