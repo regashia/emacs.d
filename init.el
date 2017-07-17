@@ -65,6 +65,13 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist
     '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
 
+;; Rails
+(when (maybe-require-package 'projectile-rails)
+  (projectile-rails-global-mode)
+  (setq
+    projectile-rails-vanilla-command "bin/rails"
+    projectile-rails-spring-command "bin/spring"))
+
 
 ;;; Final
 (when (file-exists-p custom-file)
