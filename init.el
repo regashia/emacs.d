@@ -57,6 +57,14 @@ locate PACKAGE."
 (bind-key* "C-a" 'back-to-indentation-or-beginning)
 
 
+;;; Window
+;; Window move
+(bind-key* "C-c b" 'windmove-left)
+(bind-key* "C-c f" 'windmove-right)
+(bind-key* "C-c p" 'windmove-up)
+(bind-key* "C-c n" 'windmove-down)
+
+
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
   (editorconfig-mode))
