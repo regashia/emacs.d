@@ -76,6 +76,53 @@ locate PACKAGE."
   (global-set-key (kbd "C-c t") 'google-translate-at-point))
 
 
+;;; eww
+;; 背景・文字色を無効化する
+(defvar eww-disable-colorize t)
+(defun shr-colorize-region--disable (orig start end fg &optional bg &rest _)
+  (unless eww-disable-colorize
+    (funcall orig start end fg)))
+(advice-add 'shr-colorize-region :around 'shr-colorize-region--disable)
+(advice-add 'eww-colorize-region :around 'shr-colorize-region--disable)
+(defun eww-disable-color ()
+  "文字色を反映させない"
+  (interactive)
+  (setq-local eww-disable-colorize t)
+  (eww-reload))
+(defun eww-enable-color ()
+  "文字色を反映させる"
+  (interactive)
+  (setq-local eww-disable-colorize nil)
+  (eww-reload))
+
+;; デフォルトの検索エンジンを Google に変更
+(setq eww-search-prefix "http://www.google.co.jp/search?q=")
+
+;; 複数起動可能
+(defun eww-mode-hook--rename-buffer ()
+  "Rename eww browser's buffer so sites open in new page."
+  (rename-buffer "eww" t))
+(add-hook 'eww-mode-hook 'eww-mode-hook--rename-buffer)
+
+;; 画像はデフォルトで非表示
+(defun eww-disable-images ()
+  "画像表示させない"
+  (interactive)
+  (setq-local shr-put-image-function 'shr-put-image-alt)
+  (eww-reload))
+(defun eww-enable-images ()
+  "画像表示させる"
+  (interactive)
+  (setq-local shr-put-image-function 'shr-put-image)
+  (eww-reload))
+(defun shr-put-image-alt (spec alt &optional flags)
+  (insert alt))
+;; はじめから非表示
+(defun eww-mode-hook--disable-image ()
+  (setq-local shr-put-image-function 'shr-put-image-alt))
+(add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
+
+
 ;;; Ruby
 (when (maybe-require-package 'enh-ruby-mode)
   (add-to-list 'auto-mode-alist
