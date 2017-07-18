@@ -148,6 +148,11 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode)))
 
 
+;;; TypeScript
+(when (maybe-require-package 'typescript-mode)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
+
+
 ;;; Final
 (when (file-exists-p custom-file)
   (load custom-file))
