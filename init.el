@@ -49,6 +49,13 @@ locate PACKAGE."
 (define-key key-translation-map (kbd "DEL") (kbd "C-h"))
 (define-key key-translation-map (kbd "M-DEL") (kbd "M-h"))
 
+;; Set C-a to back to indentation or beginning
+(defun back-to-indentation-or-beginning ()
+  (interactive)
+  (if (= (point) (progn (back-to-indentation) (point)))
+    (beginning-of-line)))
+(bind-key* "C-a" 'back-to-indentation-or-beginning)
+
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
