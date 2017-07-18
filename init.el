@@ -67,6 +67,11 @@ locate PACKAGE."
   (bind-key "C-c g" 'magit-status))
 
 
+;;; direnv
+(when (maybe-require-package 'direnv)
+  (direnv-mode))
+
+
 ;;; Google translate
 (when (maybe-require-package 'google-translate)
   ;; 翻訳のデフォルト値を設定 (en -> zh)
