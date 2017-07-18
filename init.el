@@ -123,6 +123,11 @@ locate PACKAGE."
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
 
 
+;;; YAML
+(when (maybe-require-package 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+
 ;;; Ruby
 (when (maybe-require-package 'enh-ruby-mode)
   (add-to-list 'auto-mode-alist
