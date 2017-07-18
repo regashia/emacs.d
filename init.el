@@ -64,6 +64,24 @@ locate PACKAGE."
 (bind-key* "C-c p" 'windmove-up)
 (bind-key* "C-c n" 'windmove-down)
 
+;; Change window size
+(bind-key* "C-c C-b"
+  (lambda()
+    (interactive)
+    (shrink-window-horizontally 10)))
+(bind-key* "C-c C-f"
+  (lambda()
+    (interactive)
+    (enlarge-window-horizontally 10)))
+(bind-key* "C-c C-p"
+  (lambda()
+    (interactive)
+    (shrink-window 10)))
+(bind-key* "C-c C-n"
+  (lambda()
+    (interactive)
+    (enlarge-window 10)))
+
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
