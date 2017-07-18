@@ -60,6 +60,15 @@ locate PACKAGE."
   (bind-key "C-c g" 'magit-status))
 
 
+;;; Google translate
+(when (maybe-require-package 'google-translate)
+  ;; 翻訳のデフォルト値を設定 (en -> zh)
+  (custom-set-variables
+    '(google-translate-default-source-language "en")
+    '(google-translate-default-target-language "zh"))
+  (global-set-key (kbd "C-c t") 'google-translate-at-point))
+
+
 ;;; Ruby
 (when (maybe-require-package 'enh-ruby-mode)
   (add-to-list 'auto-mode-alist
