@@ -76,11 +76,11 @@ locate PACKAGE."
 (bind-key* "C-c C-p"
   (lambda()
     (interactive)
-    (shrink-window 10)))
+    (shrink-window 5)))
 (bind-key* "C-c C-n"
   (lambda()
     (interactive)
-    (enlarge-window 10)))
+    (enlarge-window 5)))
 
 ;; Split and move to the window
 (bind-key* "C-x 2"
