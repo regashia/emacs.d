@@ -82,6 +82,18 @@ locate PACKAGE."
     (interactive)
     (enlarge-window 10)))
 
+;; Split and move to the window
+(bind-key* "C-x 2"
+  (lambda()
+    (interactive)
+    (split-window-below)
+    (select-window (next-window))))
+(bind-key* "C-x 3"
+  (lambda()
+    (interactive)
+    (split-window-right)
+    (select-window (next-window))))
+
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
