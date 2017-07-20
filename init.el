@@ -175,7 +175,8 @@ locate PACKAGE."
 ;; Use enh-ruby-mode
 (when (maybe-require-package 'enh-ruby-mode)
   (add-to-list 'auto-mode-alist
-    '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)))
+    '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  (setq enh-ruby-add-encoding-comment-on-save nil))
 
 ;; Rails
 (when (maybe-require-package 'projectile-rails)
