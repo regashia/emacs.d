@@ -94,6 +94,9 @@ locate PACKAGE."
     (split-window-right)
     (select-window (next-window))))
 
+;; Auto complete brackets
+(electric-pair-mode)
+
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
