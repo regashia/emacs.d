@@ -43,6 +43,9 @@ locate PACKAGE."
 
 
 ;;; Editing utils
+;; Disable menu bar
+(menu-bar-mode 0)
+
 ;; Unix style C-h
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "M-h") (kbd "<C-backspace>"))
