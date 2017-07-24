@@ -101,6 +101,26 @@ locate PACKAGE."
 (electric-pair-mode)
 
 
+;;; ido
+(ido-mode)
+(ido-everywhere)
+(when (maybe-require-package 'ido-completing-read+)
+  (ido-ubiquitous-mode))
+
+;; Fuzzy matching
+(when (maybe-require-package 'flx-ido)
+  (flx-ido-mode)
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
+
+;; smex
+(when (maybe-require-package 'smex)
+  (smex-initialize)
+  (bind-key* "M-x" 'smex)
+  (bind-key* "M-X" 'smex-major-mode-commands)
+  (bind-key* "C-c M-x" 'execute-extended-command))
+
+
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
   (editorconfig-mode))
@@ -108,7 +128,8 @@ locate PACKAGE."
 
 ;;; Git
 (when (maybe-require-package 'magit)
-  (bind-key "C-c g" 'magit-status))
+  (bind-key "C-c g" 'magit-status)
+  (setq magit-completing-read-function 'magit-ido-completing-read))
 
 
 ;;; direnv
