@@ -128,7 +128,7 @@ locate PACKAGE."
 
 ;;; Git
 (when (maybe-require-package 'magit)
-  (bind-key "C-c g" 'magit-status)
+  (bind-key* "C-c g" 'magit-status)
   (setq magit-completing-read-function 'magit-ido-completing-read))
 
 
