@@ -59,6 +59,9 @@ locate PACKAGE."
     (beginning-of-line)))
 (bind-key* "C-a" 'back-to-indentation-or-beginning)
 
+;; Auto complete brackets
+(electric-pair-mode)
+
 
 ;;; Window
 ;; Window move
@@ -96,9 +99,6 @@ locate PACKAGE."
     (interactive)
     (split-window-right)
     (select-window (next-window))))
-
-;; Auto complete brackets
-(electric-pair-mode)
 
 
 ;;; ido
