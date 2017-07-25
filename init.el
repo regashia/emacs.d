@@ -121,6 +121,11 @@ locate PACKAGE."
   (bind-key* "C-c M-x" 'execute-extended-command))
 
 
+;;; Display key bindings
+(when (maybe-require-package 'which-key)
+  (which-key-mode))
+
+
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
   (editorconfig-mode))
