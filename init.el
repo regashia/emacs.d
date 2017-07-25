@@ -1,6 +1,9 @@
 ;;; Init
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
+;; Use y-or-n to important questions
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 
 ;;; package
 (require 'package)
