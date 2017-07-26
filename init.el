@@ -104,6 +104,11 @@ locate PACKAGE."
     (select-window (next-window))))
 
 
+;;; Undo tree
+(when (maybe-require-package 'undo-tree)
+  (global-undo-tree-mode))
+
+
 ;;; ido
 (ido-mode)
 (ido-everywhere)
