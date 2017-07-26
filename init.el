@@ -45,6 +45,10 @@ locate PACKAGE."
 (require-package 'bind-key)
 
 
+;;; Hydra
+(require-package 'hydra)
+
+
 ;;; Editing utils
 ;; Disable menu bar
 (menu-bar-mode 0)
@@ -74,22 +78,26 @@ locate PACKAGE."
 (bind-key* "C-c n" 'windmove-down)
 
 ;; Change window size
-(bind-key* "C-c C-b"
-  (lambda()
-    (interactive)
-    (shrink-window-horizontally 10)))
-(bind-key* "C-c C-f"
-  (lambda()
-    (interactive)
-    (enlarge-window-horizontally 10)))
-(bind-key* "C-c C-p"
-  (lambda()
-    (interactive)
-    (shrink-window 5)))
-(bind-key* "C-c C-n"
-  (lambda()
-    (interactive)
-    (enlarge-window 5)))
+(when (require 'hydra nil t)
+  (defhydra hydra-change-window-size
+    (global-map "C-c" :timeout 0.5)
+    "Change window size"
+    ("C-b"
+      (lambda()
+        (interactive)
+        (shrink-window-horizontally 10)))
+    ("C-f"
+      (lambda()
+        (interactive)
+        (enlarge-window-horizontally 10)))
+    ("C-p"
+      (lambda()
+        (interactive)
+        (shrink-window 5)))
+    ("C-n"
+      (lambda()
+        (interactive)
+        (enlarge-window 5)))))
 
 ;; Split and move to the window
 (bind-key* "C-x 2"
