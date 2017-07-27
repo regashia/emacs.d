@@ -176,6 +176,49 @@ locate PACKAGE."
   (bind-key "C-p" 'company-select-previous company-active-map))
 
 
+;;; YAML
+(when (maybe-require-package 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+
+;;; Ruby
+;; Use enh-ruby-mode
+(when (maybe-require-package 'enh-ruby-mode)
+  (add-to-list 'auto-mode-alist
+    '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  (setq enh-ruby-add-encoding-comment-on-save nil))
+
+;; Rails
+(when (maybe-require-package 'projectile-rails)
+  (projectile-rails-global-mode)
+  (setq
+    projectile-rails-vanilla-command "bin/rails"
+    projectile-rails-spring-command "bin/spring"))
+
+
+;;; HTML
+(when (maybe-require-package 'web-mode)
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+  ;; Auto close tag
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  ;; Auto quoting after = inside tag
+  (setq web-mode-enable-auto-quoting t))
+
+
+;;; TypeScript
+(when (maybe-require-package 'typescript-mode)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
+
+
 ;;; eww
 ;; 背景・文字色を無効化する
 (defvar eww-disable-colorize t)
@@ -221,49 +264,6 @@ locate PACKAGE."
 (defun eww-mode-hook--disable-image ()
   (setq-local shr-put-image-function 'shr-put-image-alt))
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
-
-
-;;; YAML
-(when (maybe-require-package 'yaml-mode)
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
-
-
-;;; Ruby
-;; Use enh-ruby-mode
-(when (maybe-require-package 'enh-ruby-mode)
-  (add-to-list 'auto-mode-alist
-    '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
-  (setq enh-ruby-add-encoding-comment-on-save nil))
-
-;; Rails
-(when (maybe-require-package 'projectile-rails)
-  (projectile-rails-global-mode)
-  (setq
-    projectile-rails-vanilla-command "bin/rails"
-    projectile-rails-spring-command "bin/spring"))
-
-
-;;; HTML
-(when (maybe-require-package 'web-mode)
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-  ;; Auto close tag
-  (setq web-mode-enable-auto-closing t)
-  (setq web-mode-enable-auto-pairing t)
-  ;; Auto quoting after = inside tag
-  (setq web-mode-enable-auto-quoting t))
-
-
-;;; TypeScript
-(when (maybe-require-package 'typescript-mode)
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
 
 
 ;;; Final
