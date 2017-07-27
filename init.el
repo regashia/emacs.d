@@ -167,6 +167,15 @@ locate PACKAGE."
   (global-set-key (kbd "C-c t") 'google-translate-at-point))
 
 
+;;; Code completion
+(when (maybe-require-package 'company)
+  (global-company-mode)
+  (bind-key "M-/" 'company-complete company-mode-map)
+  (bind-key "M-/" 'company-select-next company-active-map)
+  (bind-key "C-n" 'company-select-next company-active-map)
+  (bind-key "C-p" 'company-select-previous company-active-map))
+
+
 ;;; eww
 ;; 背景・文字色を無効化する
 (defvar eww-disable-colorize t)
