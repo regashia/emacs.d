@@ -188,6 +188,13 @@ locate PACKAGE."
     '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
   (setq enh-ruby-add-encoding-comment-on-save nil))
 
+;; Code completion
+(when (maybe-require-package 'robe)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  (when (require 'company nil t)
+    (eval-after-load 'company
+      '(push 'company-robe company-backends))))
+
 ;; Rails
 (when (maybe-require-package 'projectile-rails)
   (projectile-rails-global-mode)
