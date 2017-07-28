@@ -136,6 +136,12 @@ locate PACKAGE."
   (bind-key* "M-X" 'smex-major-mode-commands)
   (bind-key* "C-c M-x" 'execute-extended-command))
 
+;; Like helm
+(when (maybe-require-package 'ido-vertical-mode)
+  (ido-vertical-mode)
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+  (setq ido-vertical-show-count t))
+
 
 ;;; Display key bindings
 (when (maybe-require-package 'which-key)
