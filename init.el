@@ -232,6 +232,10 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
 
 
+;;; Groovy
+(require-package 'groovy-mode)
+
+
 ;;; eww
 ;; 背景・文字色を無効化する
 (defvar eww-disable-colorize t)
