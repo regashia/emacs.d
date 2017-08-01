@@ -209,6 +209,16 @@ locate PACKAGE."
     projectile-rails-spring-command "bin/spring"))
 
 
+;;; Go
+(when (maybe-require-package 'go-mode)
+  (require-package 'company-go)
+  (add-hook 'go-mode-hook
+    (lambda ()
+      (when (require 'company-go nil t)
+        (set (make-local-variable 'company-backends) '(company-go)))
+      (add-hook 'before-save-hook 'gofmt-before-save))))
+
+
 ;;; HTML
 (when (maybe-require-package 'web-mode)
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
