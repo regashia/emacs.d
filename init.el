@@ -122,6 +122,10 @@ locate PACKAGE."
     (split-window-right)
     (select-window (next-window))))
 
+;; Zoom
+(when (maybe-require-package 'zoom-window)
+  (bind-key* (kbd "C-c 1") 'zoom-window-zoom))
+
 
 ;;; Undo tree
 (when (maybe-require-package 'undo-tree)
