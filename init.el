@@ -169,6 +169,10 @@ locate PACKAGE."
   (bind-key* "C-c g" 'magit-status)
   (setq magit-completing-read-function 'magit-ido-completing-read))
 
+;; 変更箇所を右側に表示する
+(when (maybe-require-package 'git-gutter+)
+  (global-git-gutter+-mode))
+
 
 ;;; direnv
 (when (maybe-require-package 'direnv)
