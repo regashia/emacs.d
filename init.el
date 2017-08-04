@@ -72,26 +72,14 @@ locate PACKAGE."
 
 ;;; Window
 ;; Change window
+(bind-key* "C-c w b" 'windmove-left)
+(bind-key* "C-c w f" 'windmove-right)
+(bind-key* "C-c w p" 'windmove-up)
+(bind-key* "C-c w n" 'windmove-down)
 (when (require 'hydra nil t)
   (defhydra hydra-change-window-size
-    (:timeout 0.5)
+    (global-map "C-c w" :timeout 0.5)
     "Change window"
-    ("b"
-      (lambda()
-        (interactive)
-        (windmove-left)))
-    ("f"
-      (lambda()
-        (interactive)
-        (windmove-right)))
-    ("p"
-      (lambda()
-        (interactive)
-        (windmove-up)))
-    ("n"
-      (lambda()
-        (interactive)
-        (windmove-down)))
     ("C-b"
       (lambda()
         (interactive)
@@ -107,8 +95,7 @@ locate PACKAGE."
     ("C-n"
       (lambda()
         (interactive)
-        (enlarge-window 5))))
-  (bind-key* "C-c w" 'hydra-change-window-size/body))
+        (enlarge-window 5)))))
 
 ;; Split and move to the window
 (bind-key* "C-x 2"
