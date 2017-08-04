@@ -71,11 +71,16 @@ locate PACKAGE."
 
 
 ;;; Window
-;; Change window
+;; Change
+(when (maybe-require-package 'switch-window)
+  (setq switch-window-shortcut-style 'qwerty)
+  (bind-key* "C-c o" 'switch-window))
 (bind-key* "C-c w b" 'windmove-left)
 (bind-key* "C-c w f" 'windmove-right)
 (bind-key* "C-c w p" 'windmove-up)
 (bind-key* "C-c w n" 'windmove-down)
+
+;; Resize
 (when (require 'hydra nil t)
   (defhydra hydra-change-window-size
     (global-map "C-c w" :timeout 0.5)
