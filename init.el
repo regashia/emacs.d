@@ -193,6 +193,11 @@ locate PACKAGE."
   (bind-key "C-p" 'company-select-previous company-active-map))
 
 
+;;; Syntax checking
+(when (maybe-require-package 'flycheck)
+  (global-flycheck-mode))
+
+
 ;;; YAML
 (when (maybe-require-package 'yaml-mode)
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
