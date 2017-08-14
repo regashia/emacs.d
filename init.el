@@ -155,6 +155,12 @@ locate PACKAGE."
   (which-key-mode))
 
 
+;;; Dired
+(require 'wdired)
+(setq wdired-allow-to-change-permissions t)
+(bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map)
+
+
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
   (editorconfig-mode))
