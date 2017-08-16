@@ -70,6 +70,12 @@ locate PACKAGE."
 (electric-pair-mode)
 
 
+;;; Fuzzy matching
+(when (maybe-require-package 'fiplr)
+  (bind-key* "C-c C-f" 'fiplr-find-file)
+  (bind-key* "C-c d" 'fiplr-find-directory))
+
+
 ;;; Window
 ;; Change
 (when (maybe-require-package 'switch-window)
