@@ -290,7 +290,9 @@ locate PACKAGE."
   (setq skk-sticky-key ";")
   ;; isearch-mode でも使用可能にする
   (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
-  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup))
+  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+
+  (setq skk-preload t))
 
 
 ;;; eww
