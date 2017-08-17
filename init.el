@@ -49,6 +49,11 @@ locate PACKAGE."
 (require-package 'hydra)
 
 
+;;; Prefix
+(bind-key "C-q" nil global-map)
+(bind-key* "C-q C-q" 'quoted-insert)
+
+
 ;;; Editing utils
 ;; Disable menu bar
 (menu-bar-mode 0)
@@ -72,24 +77,24 @@ locate PACKAGE."
 
 ;;; Fuzzy matching
 (when (maybe-require-package 'fiplr)
-  (bind-key* "C-c C-f" 'fiplr-find-file)
-  (bind-key* "C-c d" 'fiplr-find-directory))
+  (bind-key* "C-q C-f" 'fiplr-find-file)
+  (bind-key* "C-q d" 'fiplr-find-directory))
 
 
 ;;; Window
 ;; Change
 (when (maybe-require-package 'switch-window)
   (setq switch-window-shortcut-style 'qwerty)
-  (bind-key* "C-c o" 'switch-window))
-(bind-key* "C-c w b" 'windmove-left)
-(bind-key* "C-c w f" 'windmove-right)
-(bind-key* "C-c w p" 'windmove-up)
-(bind-key* "C-c w n" 'windmove-down)
+  (bind-key* "C-q o" 'switch-window))
+(bind-key* "C-q w b" 'windmove-left)
+(bind-key* "C-q w f" 'windmove-right)
+(bind-key* "C-q w p" 'windmove-up)
+(bind-key* "C-q w n" 'windmove-down)
 
 ;; Resize
 (when (require 'hydra nil t)
   (defhydra hydra-change-window-size
-    (global-map "C-c w" :timeout 0.5)
+    (global-map "C-q w" :timeout 0.5)
     "Change window"
     ("C-b"
       (lambda()
@@ -122,7 +127,7 @@ locate PACKAGE."
 
 ;; Zoom
 (when (maybe-require-package 'zoom-window)
-  (bind-key* (kbd "C-c 1") 'zoom-window-zoom))
+  (bind-key* (kbd "C-q 1") 'zoom-window-zoom))
 
 
 ;;; Undo tree
@@ -147,7 +152,7 @@ locate PACKAGE."
   (smex-initialize)
   (bind-key* "M-x" 'smex)
   (bind-key* "M-X" 'smex-major-mode-commands)
-  (bind-key* "C-c M-x" 'execute-extended-command))
+  (bind-key* "C-q M-x" 'execute-extended-command))
 
 ;; Like helm
 (when (maybe-require-package 'ido-vertical-mode)
@@ -174,7 +179,7 @@ locate PACKAGE."
 
 ;;; Git
 (when (maybe-require-package 'magit)
-  (bind-key* "C-c g" 'magit-status)
+  (bind-key* "C-q g" 'magit-status)
   (setq magit-completing-read-function 'magit-ido-completing-read))
 
 ;; 変更箇所を右側に表示する
@@ -193,7 +198,7 @@ locate PACKAGE."
   (custom-set-variables
     '(google-translate-default-source-language "en")
     '(google-translate-default-target-language "zh"))
-  (global-set-key (kbd "C-c t") 'google-translate-at-point))
+  (global-set-key (kbd "C-q t") 'google-translate-at-point))
 
 
 ;;; Code completion
