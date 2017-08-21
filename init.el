@@ -75,12 +75,6 @@ locate PACKAGE."
 (electric-pair-mode)
 
 
-;;; Fuzzy matching
-(when (maybe-require-package 'fiplr)
-  (bind-key* "C-q C-f" 'fiplr-find-file)
-  (bind-key* "C-q d" 'fiplr-find-directory))
-
-
 ;;; Window
 ;; Change
 (when (maybe-require-package 'switch-window)
@@ -213,6 +207,15 @@ locate PACKAGE."
 ;;; Syntax checking
 (when (maybe-require-package 'flycheck)
   (global-flycheck-mode))
+
+
+;;; Find file in project
+(when (maybe-require-package 'projectile)
+  (projectile-global-mode)
+  ;; .gitignore に記載されているファイルも列挙する
+  (setq projectile-git-command "git ls-files -zco")
+  (bind-key* "C-q C-f" 'projectile-find-file)
+  (bind-key* "C-q d" 'projectile-find-dir))
 
 
 ;;; YAML
