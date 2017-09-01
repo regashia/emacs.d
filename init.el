@@ -72,7 +72,9 @@ locate PACKAGE."
 (bind-key* "C-a" 'back-to-indentation-or-beginning)
 
 ;; Auto complete brackets
-(electric-pair-mode)
+(when (maybe-require-package 'smartparens)
+  (require 'smartparens-config)
+  (smartparens-global-mode))
 
 
 ;;; Window
