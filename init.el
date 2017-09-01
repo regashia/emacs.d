@@ -74,7 +74,7 @@ locate PACKAGE."
 ;; Auto complete brackets
 (when (maybe-require-package 'smartparens)
   (require 'smartparens-config)
-  (smartparens-global-mode))
+  (smartparens-global-strict-mode))
 
 
 ;;; Window
