@@ -74,7 +74,14 @@ locate PACKAGE."
 ;; Auto complete brackets
 (when (maybe-require-package 'smartparens)
   (require 'smartparens-config)
-  (smartparens-global-strict-mode))
+  (smartparens-global-strict-mode)
+
+  ;; .rb
+  (sp-pair "do |" "|")
+  (sp-pair "{ |" "| }")
+  ;; .erb
+  (sp-pair "<% " " %>")
+  (sp-pair "<%= " " %>"))
 
 
 ;;; Window
@@ -270,7 +277,6 @@ locate PACKAGE."
 
   ;; Auto close tag
   (setq web-mode-enable-auto-closing t)
-  (setq web-mode-enable-auto-pairing t)
   ;; Auto quoting after = inside tag
   (setq web-mode-enable-auto-quoting t))
 
