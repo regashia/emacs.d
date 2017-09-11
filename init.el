@@ -233,6 +233,9 @@ locate PACKAGE."
 
 
 ;;; Ruby
+;; Do not insert coding utf-8 comment
+(setq ruby-insert-encoding-magic-comment nil)
+
 ;; Use enh-ruby-mode
 (when (maybe-require-package 'enh-ruby-mode)
   (add-to-list 'auto-mode-alist
