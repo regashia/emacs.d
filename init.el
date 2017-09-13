@@ -263,7 +263,10 @@ locate PACKAGE."
       (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
   (add-hook 'enh-ruby-mode-hook
     (lambda ()
-      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file))))
+      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
+
+  (when (require 'popwin nil t)
+    (push '("\*RuboCop /.*\*" :regexp t) popwin:special-display-config)))
 
 ;; Rails
 (when (maybe-require-package 'projectile-rails)
