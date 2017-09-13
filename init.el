@@ -258,12 +258,14 @@ locate PACKAGE."
 (when (maybe-require-package 'rubocop)
   (setq rubocop-autocorrect-command "bundle exec rubocop -a")
 
-  (add-hook 'ruby-mode-hook
-    (lambda ()
-      (add-hook 'after-save-hook 'rubocop-autocorrect-current-file)))
-  (add-hook 'enh-ruby-mode-hook
-    (lambda ()
-      (add-hook 'after-save-hook 'rubocop-autocorrect-current-file)))
+  (add-hook 'after-save-hook
+    (lambda()
+      (when (eq major-mode 'ruby-mode)
+        (rubocop-autocorrect-current-file))))
+  (add-hook 'after-save-hook
+    (lambda()
+      (when (eq major-mode 'enh-ruby-mode)
+        (rubocop-autocorrect-current-file))))
 
   (when (require 'popwin nil t)
     (push '("\*RuboCop /.*\*" :regexp t) popwin:special-display-config)))
