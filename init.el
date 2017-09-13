@@ -132,6 +132,11 @@ locate PACKAGE."
 (when (maybe-require-package 'zoom-window)
   (bind-key* (kbd "C-q 1") 'zoom-window-zoom))
 
+;; popwin
+(when (maybe-require-package 'popwin)
+  (require 'popwin)
+  (popwin-mode))
+
 
 ;;; Undo tree
 (when (maybe-require-package 'undo-tree)
