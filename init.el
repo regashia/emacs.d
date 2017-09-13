@@ -260,10 +260,10 @@ locate PACKAGE."
 
   (add-hook 'ruby-mode-hook
     (lambda ()
-      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
+      (add-hook 'after-save-hook 'rubocop-autocorrect-current-file)))
   (add-hook 'enh-ruby-mode-hook
     (lambda ()
-      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
+      (add-hook 'after-save-hook 'rubocop-autocorrect-current-file)))
 
   (when (require 'popwin nil t)
     (push '("\*RuboCop /.*\*" :regexp t) popwin:special-display-config)))
