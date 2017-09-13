@@ -249,6 +249,17 @@ locate PACKAGE."
     (eval-after-load 'company
       '(push 'company-robe company-backends))))
 
+;; Format on save
+(when (maybe-require-package 'rubocop)
+  (setq rubocop-autocorrect-command "bundle exec rubocop -a")
+
+  (add-hook 'ruby-mode-hook
+    (lambda ()
+      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
+  (add-hook 'enh-ruby-mode-hook
+    (lambda ()
+      (add-hook 'before-save-hook 'rubocop-autocorrect-current-file))))
+
 ;; Rails
 (when (maybe-require-package 'projectile-rails)
   (projectile-rails-global-mode)
