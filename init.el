@@ -360,6 +360,7 @@ locate PACKAGE."
 ;; 複数起動可能
 (defun eww-mode-hook--rename-buffer ()
   "Rename eww browser's buffer so sites open in new page."
+
   (rename-buffer "eww" t))
 (add-hook 'eww-mode-hook 'eww-mode-hook--rename-buffer)
 
@@ -382,7 +383,12 @@ locate PACKAGE."
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
 
 ;; キーバインド
-(bind-key* "C-q e" 'eww)
+(bind-key* "C-q e"
+  (lambda (keywords)
+    (interactive "sEnter keywords")
+    (split-window-right)
+    (select-window (next-window))
+    (eww keywords)))
 
 
 ;;; Final
