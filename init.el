@@ -381,6 +381,9 @@ locate PACKAGE."
   (setq-local shr-put-image-function 'shr-put-image-alt))
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
 
+;; キーバインド
+(bind-key* "C-q e" 'eww)
+
 
 ;;; Final
 (when (file-exists-p custom-file)
