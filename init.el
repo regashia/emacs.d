@@ -188,7 +188,8 @@ locate PACKAGE."
 ;;; Git
 (when (maybe-require-package 'magit)
   (bind-key* "C-q g" 'magit-status)
-  (setq magit-completing-read-function 'magit-ido-completing-read))
+  (setq magit-completing-read-function 'magit-ido-completing-read)
+  (setq magit-diff-refine-hunk t))
 
 ;; 変更箇所を右側に表示する
 (when (maybe-require-package 'git-gutter+)
