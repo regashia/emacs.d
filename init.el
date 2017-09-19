@@ -263,6 +263,8 @@ locate PACKAGE."
 (when (maybe-require-package 'rubocop)
   (setq rubocop-autocorrect-command "bundle exec rubocop -a")
 
+  (bind-key* "C-q a" 'rubocop-autocorrect-current-file)
+
   (when (require 'popwin nil t)
     (push '("\*RuboCop /.*\*" :regexp t) popwin:special-display-config)))
 
