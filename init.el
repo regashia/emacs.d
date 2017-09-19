@@ -83,6 +83,10 @@ locate PACKAGE."
   (sp-pair "<% " " %>")
   (sp-pair "<%= " " %>"))
 
+;; Auto save
+(when (maybe-require-package 'auto-save-buffers-enhanced)
+  (auto-save-buffers-enhanced t))
+
 
 ;;; Window
 ;; Change
