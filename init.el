@@ -198,7 +198,7 @@ locate PACKAGE."
 
 ;;; direnv
 (when (maybe-require-package 'direnv)
-  (direnv-mode))
+  (add-hook 'find-file-hook 'direnv-update-environment))
 
 
 ;;; Google translate
