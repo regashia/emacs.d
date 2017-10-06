@@ -219,6 +219,12 @@ locate PACKAGE."
   (bind-key "C-p" 'company-select-previous company-active-map))
 
 
+;;; Snippet
+(when (maybe-require-package 'yasnippet)
+  (require-package 'yasnippet-snippets)
+  (yas-global-mode))
+
+
 ;;; Syntax checking
 (when (maybe-require-package 'flycheck)
   (global-flycheck-mode))
