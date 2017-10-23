@@ -84,6 +84,13 @@ locate PACKAGE."
   (sp-pair "<%= " " %>"))
 
 
+;;; like vim eazymotion
+(when (maybe-require-package 'avy)
+  (bind-key* "C-q ;" 'avy-goto-char)
+  (bind-key* "C-q '" 'avy-goto-char-2)
+  (bind-key* "C-q l" 'avy-goto-line))
+
+
 ;;; Window
 ;; Change
 (when (maybe-require-package 'switch-window)
