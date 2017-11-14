@@ -54,9 +54,19 @@ locate PACKAGE."
 (bind-key* "C-q C-q" 'quoted-insert)
 
 
+;;; Emacs server
+(server-start)
+
+
+;;; Font
+(set-face-attribute 'default nil :font "Ricty-14")
+
+
 ;;; Editing utils
 ;; Disable menu bar
 (menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 ;; Disable backup file
 (setq make-backup-files nil)
