@@ -61,6 +61,9 @@ locate PACKAGE."
 ;; Disable backup file
 (setq make-backup-files nil)
 
+;; Always follow symlink
+(setq vc-follow-symlinks t)
+
 ;; Unix style C-h
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "M-h") (kbd "<C-backspace>"))
