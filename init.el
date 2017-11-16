@@ -68,6 +68,9 @@ locate PACKAGE."
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+;; Cursor type
+(setq-default cursor-type 'bar)
+
 ;; Disable backup file
 (setq make-backup-files nil)
 
