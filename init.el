@@ -41,6 +41,10 @@ locate PACKAGE."
       nil)))
 
 
+;;; Network security
+(setq network-security-level 'low)
+
+
 ;;; bind-key
 (require-package 'bind-key)
 
