@@ -346,6 +346,11 @@ locate PACKAGE."
   (setq web-mode-enable-auto-quoting t))
 
 
+;;; Haml
+(when (maybe-require-package 'haml-mode)
+  (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)))
+
+
 ;;; TypeScript
 (when (maybe-require-package 'typescript-mode)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
