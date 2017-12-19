@@ -107,6 +107,10 @@ locate PACKAGE."
   (sp-pair "<%= " " %>"))
 
 
+;;; 終了時の状態を復元
+(desktop-save-mode)
+
+
 ;;; like vim eazymotion
 (when (maybe-require-package 'avy)
   (bind-key* "C-q ;" 'avy-goto-char)
