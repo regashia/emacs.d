@@ -104,6 +104,7 @@ locate PACKAGE."
   (sp-pair "{ |" "| }")
   ;; .erb
   (sp-pair "<% " " %>")
+  (sp-pair "<%=" "%>")
   (sp-pair "<%= " " %>"))
 
 
