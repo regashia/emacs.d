@@ -283,6 +283,10 @@ locate PACKAGE."
 (require-package 'paredit)
 
 
+;;; Emacs lisp
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+
+
 ;;; Clojure
 (when (maybe-require-package 'cider)
   (add-hook 'cider-mode-hook 'paredit-mode))
