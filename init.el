@@ -279,6 +279,15 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 
+;;; 括弧を特殊扱いする (Lisp 用)
+(require-package 'paredit)
+
+
+;;; Clojure
+(when (maybe-require-package 'cider)
+  (add-hook 'cider-mode-hook 'paredit-mode))
+
+
 ;;; Ruby
 ;; Do not insert coding utf-8 comment
 (setq ruby-insert-encoding-magic-comment nil)
