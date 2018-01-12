@@ -293,7 +293,7 @@ locate PACKAGE."
 
 ;;; Clojure
 (when (maybe-require-package 'cider)
-  (add-hook 'cider-mode-hook 'paredit-mode))
+  (add-hook 'clojure-mode-hook 'paredit-mode))
 
 
 ;;; Ruby
