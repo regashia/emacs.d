@@ -214,6 +214,10 @@ locate PACKAGE."
 (setq wdired-allow-to-change-permissions t)
 (bind-key "e" 'wdired-change-to-wdired-mode dired-mode-map)
 
+;; macos の ls コマンドに --dired オプションはない
+(if (eq system-type 'darwin)
+  (setq dired-use-ls-dired nil))
+
 
 ;;; EditorConfig
 (when (maybe-require-package 'editorconfig)
