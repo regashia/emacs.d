@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# git コマンドを使用することでキャッシュによる高速化が可能
+export FZF_DEFAULT_COMMAND="git ls-files -co"
+fzf $@

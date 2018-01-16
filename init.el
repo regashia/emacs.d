@@ -92,7 +92,8 @@ locate PACKAGE."
   (interactive)
   (if (= (point) (progn (back-to-indentation) (point)))
     (beginning-of-line)))
-(bind-key* "C-a" 'back-to-indentation-or-beginning)
+;; bind-key* を使用すると term-mode(fzf) での挙動がおかしくなるため、 bind-key
+(bind-key "C-a" 'back-to-indentation-or-beginning)
 
 ;; Auto complete brackets
 (when (maybe-require-package 'smartparens)
@@ -184,6 +185,11 @@ locate PACKAGE."
 (when (maybe-require-package 'ido-completing-read+)
   (ido-ubiquitous-mode))
 
+;; C-a
+(add-hook 'ido-minibuffer-setup-hook
+  (lambda ()
+    (local-set-key (kbd "C-a") 'back-to-indentation-or-beginning)))
+
 ;; Fuzzy matching
 (when (maybe-require-package 'flx-ido)
   (flx-ido-mode)
@@ -269,13 +275,18 @@ locate PACKAGE."
   (global-flycheck-mode))
 
 
-;;; Find file in project
-(when (maybe-require-package 'projectile)
-  (projectile-global-mode)
-  ;; .gitignore に記載されているファイルも列挙する
-  (setq projectile-git-command "git ls-files -zco")
-  (bind-key* "C-q C-f" 'projectile-find-file)
-  (bind-key* "C-q d" 'projectile-find-dir))
+;;; fzf
+(when (maybe-require-package 'fzf)
+  (bind-key* "C-q C-f"
+    (lambda ()
+      (interactive)
+      (setq fzf/executable (concat user-emacs-directory "fzf-files"))
+      (fzf)))
+  (bind-key* "C-q d"
+    (lambda ()
+      (interactive)
+      (setq fzf/executable (concat user-emacs-directory "fzf-directories"))
+      (fzf))))
 
 
 ;;; YAML

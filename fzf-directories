@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export FZF_DEFAULT_COMMAND="find . -type d -not -iwholename '*/.git*' 2> /dev/null"
+fzf $@
