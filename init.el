@@ -113,6 +113,12 @@ locate PACKAGE."
 (desktop-save-mode)
 
 
+;;; multiple-cursors
+(when (maybe-require-package 'multiple-cursors)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this))
+
+
 ;;; like vim eazymotion
 (when (maybe-require-package 'avy)
   (bind-key* "C-q ;" 'avy-goto-char)
