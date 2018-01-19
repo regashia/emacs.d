@@ -54,8 +54,14 @@ locate PACKAGE."
 
 
 ;;; Prefix
-(bind-key "C-q" nil global-map)
-(bind-key* "C-q C-q" 'quoted-insert)
+(defconst custom-prefix-key "C-q")
+(defun custom-key (key)
+  "Return KEY with custom prefix key."
+  (concat custom-prefix-key key))
+
+(bind-key custom-prefix-key nil global-map)
+(if (equal custom-prefix-key "C-q")
+  (bind-key* (custom-key " C-q") 'quoted-insert))
 
 
 ;;; Emacs server
@@ -121,25 +127,25 @@ locate PACKAGE."
 
 ;;; like vim eazymotion
 (when (maybe-require-package 'avy)
-  (bind-key* "C-q ;" 'avy-goto-char)
-  (bind-key* "C-q '" 'avy-goto-char-2)
-  (bind-key* "C-q l" 'avy-goto-line))
+  (bind-key* (custom-key " ;") 'avy-goto-char)
+  (bind-key* (custom-key " '") 'avy-goto-char-2)
+  (bind-key* (custom-key " l") 'avy-goto-line))
 
 
 ;;; Window
 ;; Change
 (when (maybe-require-package 'switch-window)
   (setq switch-window-shortcut-style 'qwerty)
-  (bind-key* "C-q o" 'switch-window))
-(bind-key* "C-q w b" 'windmove-left)
-(bind-key* "C-q w f" 'windmove-right)
-(bind-key* "C-q w p" 'windmove-up)
-(bind-key* "C-q w n" 'windmove-down)
+  (bind-key* (custom-key " o") 'switch-window))
+(bind-key* (custom-key " w b") 'windmove-left)
+(bind-key* (custom-key " w f") 'windmove-right)
+(bind-key* (custom-key " w p") 'windmove-up)
+(bind-key* (custom-key " w n") 'windmove-down)
 
 ;; Resize
 (when (require 'hydra nil t)
   (defhydra hydra-change-window-size
-    (global-map "C-q w" :timeout 0.5)
+    (global-map (custom-key " w") :timeout 0.5)
     "Change window"
     ("C-b"
       (lambda()
@@ -172,7 +178,7 @@ locate PACKAGE."
 
 ;; Zoom
 (when (maybe-require-package 'zoom-window)
-  (bind-key* (kbd "C-q 1") 'zoom-window-zoom))
+  (bind-key* (kbd (custom-key " 1")) 'zoom-window-zoom))
 
 ;; popwin
 (when (maybe-require-package 'popwin)
@@ -207,7 +213,7 @@ locate PACKAGE."
   (smex-initialize)
   (bind-key* "M-x" 'smex)
   (bind-key* "M-X" 'smex-major-mode-commands)
-  (bind-key* "C-q M-x" 'execute-extended-command))
+  (bind-key* (custom-key " M-x") 'execute-extended-command))
 
 ;; Like helm
 (when (maybe-require-package 'ido-vertical-mode)
@@ -238,7 +244,7 @@ locate PACKAGE."
 
 ;;; Git
 (when (maybe-require-package 'magit)
-  (bind-key* "C-q g" 'magit-status)
+  (bind-key* (custom-key " g") 'magit-status)
   (setq magit-completing-read-function 'magit-ido-completing-read)
   (setq magit-diff-refine-hunk t))
 
@@ -258,7 +264,7 @@ locate PACKAGE."
   (custom-set-variables
     '(google-translate-default-source-language "en")
     '(google-translate-default-target-language "zh"))
-  (global-set-key (kbd "C-q t") 'google-translate-at-point))
+  (global-set-key (kbd (custom-key " t")) 'google-translate-at-point))
 
 
 ;;; Code completion
@@ -283,12 +289,12 @@ locate PACKAGE."
 
 ;;; fzf
 (when (maybe-require-package 'fzf)
-  (bind-key* "C-q C-f"
+  (bind-key* (custom-key " C-f")
     (lambda ()
       (interactive)
       (setq fzf/executable (concat user-emacs-directory "fzf-files"))
       (fzf)))
-  (bind-key* "C-q d"
+  (bind-key* (custom-key " d")
     (lambda ()
       (interactive)
       (setq fzf/executable (concat user-emacs-directory "fzf-directories"))
@@ -448,7 +454,7 @@ locate PACKAGE."
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
 
 ;; キーバインド
-(bind-key* "C-q e"
+(bind-key* (custom-key " e")
   (lambda (keywords)
     (interactive "sEnter keywords")
     (split-window-right)
