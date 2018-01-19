@@ -54,7 +54,7 @@ locate PACKAGE."
 
 
 ;;; Prefix
-(defconst custom-prefix-key "C-t")
+(defconst custom-prefix-key "C-q")
 (defun custom-key (key)
   "Return KEY with custom prefix key."
   (concat custom-prefix-key key))
