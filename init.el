@@ -54,7 +54,7 @@ locate PACKAGE."
 
 
 ;;; Prefix
-(defconst custom-prefix-key "C-q")
+(defconst custom-prefix-key "C-t")
 (defun custom-key (key)
   "Return KEY with custom prefix key."
   (concat custom-prefix-key key))
@@ -62,6 +62,8 @@ locate PACKAGE."
 (bind-key custom-prefix-key nil global-map)
 (if (equal custom-prefix-key "C-q")
   (bind-key* (custom-key " C-q") 'quoted-insert))
+(if (equal custom-prefix-key "C-t")
+  (bind-key* (custom-key " C-t") 'transpose-chars))
 
 
 ;;; Emacs server
