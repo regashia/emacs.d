@@ -63,7 +63,8 @@ locate PACKAGE."
 (if (equal custom-prefix-key "C-q")
   (bind-key* (custom-key " C-q") 'quoted-insert))
 (if (equal custom-prefix-key "C-t")
-  (bind-key* (custom-key " C-t") 'transpose-chars))
+  (bind-key "C-t" nil global-map))
+(bind-key* "C-t C-t" 'transpose-chars)
 
 
 ;;; Emacs server
@@ -138,16 +139,16 @@ locate PACKAGE."
 ;; Change
 (when (maybe-require-package 'switch-window)
   (setq switch-window-shortcut-style 'qwerty)
-  (bind-key* (custom-key " o") 'switch-window))
-(bind-key* (custom-key " w b") 'windmove-left)
-(bind-key* (custom-key " w f") 'windmove-right)
-(bind-key* (custom-key " w p") 'windmove-up)
-(bind-key* (custom-key " w n") 'windmove-down)
+  (bind-key* "C-t o" 'switch-window))
+(bind-key* "C-t b" 'windmove-left)
+(bind-key* "C-t f" 'windmove-right)
+(bind-key* "C-t p" 'windmove-up)
+(bind-key* "C-t n" 'windmove-down)
 
 ;; Resize
 (when (require 'hydra nil t)
   (defhydra hydra-change-window-size
-    (global-map (custom-key " w") :timeout 0.5)
+    (global-map "C-t" :timeout 0.5)
     "Change window"
     ("C-b"
       (lambda()
@@ -173,6 +174,16 @@ locate PACKAGE."
     (split-window-below)
     (select-window (next-window))))
 (bind-key* "C-x 3"
+  (lambda()
+    (interactive)
+    (split-window-right)
+    (select-window (next-window))))
+(bind-key* "C-t s"
+  (lambda()
+    (interactive)
+    (split-window-below)
+    (select-window (next-window))))
+(bind-key* "C-t v"
   (lambda()
     (interactive)
     (split-window-right)
