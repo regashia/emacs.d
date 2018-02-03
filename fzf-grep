@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export FZF_DEFAULT_COMMAND="git grep ''"
+fzf $@ | awk -F: '{print $1}'
