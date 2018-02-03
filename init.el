@@ -405,6 +405,11 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)))
 
 
+;;; Nginx
+(when (maybe-require-package 'nginx-mode)
+  (add-to-list 'auto-mode-alist '("nginx\\.conf\\'" . nginx-mode)))
+
+
 ;;; TypeScript
 (when (maybe-require-package 'typescript-mode)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
