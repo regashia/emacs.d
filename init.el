@@ -118,10 +118,6 @@ locate PACKAGE."
   (sp-pair "<%= " " %>"))
 
 
-;;; 終了時の状態を復元
-(desktop-save-mode)
-
-
 ;;; multiple-cursors
 (when (maybe-require-package 'multiple-cursors)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
