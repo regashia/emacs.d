@@ -81,6 +81,9 @@ locate PACKAGE."
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+;; 警告音を鳴らさない
+(setq ring-bell-function 'ignore)
+
 ;; Cursor type
 (setq-default cursor-type 'bar)
 
