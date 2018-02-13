@@ -311,7 +311,7 @@ locate PACKAGE."
       (interactive)
       (setq fzf/executable (concat user-emacs-directory "fzf-directories"))
       (fzf)))
-    (bind-key* (custom-key " C-g")
+    (bind-key* (custom-key " f")
     (lambda ()
       (interactive)
       (setq fzf/executable (concat user-emacs-directory "fzf-grep"))
