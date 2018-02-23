@@ -112,9 +112,12 @@ locate PACKAGE."
   (require 'smartparens-config)
   (smartparens-global-mode)
 
+  (sp-pair "{ " " }")
+
   ;; .rb
   (sp-pair "do |" "|")
   (sp-pair "{ |" "| }")
+
   ;; .erb
   (sp-pair "<% " " %>")
   (sp-pair "<%=" "%>")
