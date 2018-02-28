@@ -472,7 +472,7 @@ locate PACKAGE."
 ;; キーバインド
 (bind-key* (custom-key " e")
   (lambda (keywords)
-    (interactive "sEnter keywords")
+    (interactive "skeywords: ")
     (split-window-right)
     (select-window (next-window))
     (eww keywords)))
