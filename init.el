@@ -84,7 +84,8 @@ locate PACKAGE."
 ;; 警告音を鳴らさない
 (setq ring-bell-function 'ignore)
 
-;; Cursor type
+;; Cursor
+(blink-cursor-mode 0)
 (setq-default cursor-type 'bar)
 
 ;; Disable backup file
