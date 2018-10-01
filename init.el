@@ -196,6 +196,10 @@ locate PACKAGE."
 (when (maybe-require-package 'zoom-window)
   (bind-key* (kbd (custom-key " 1")) 'zoom-window-zoom))
 
+;; Auto save
+(when (maybe-require-package 'focus-autosave-mode)
+  (focus-autosave-mode))
+
 ;; popwin
 (when (maybe-require-package 'popwin)
   (require 'popwin)
