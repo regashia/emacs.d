@@ -78,8 +78,9 @@ locate PACKAGE."
 ;;; Editing utils
 ;; Disable menu bar
 (menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(if window-system (progn
+                    (tool-bar-mode 0)
+                    (scroll-bar-mode 0)))
 
 ;; 警告音を鳴らさない
 (setq ring-bell-function 'ignore)
