@@ -409,6 +409,10 @@ locate PACKAGE."
   (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)))
 
 
+;;; Vue
+(require-package 'vue-mode)
+
+
 ;;; Nginx
 (when (maybe-require-package 'nginx-mode)
   (add-to-list 'auto-mode-alist '("nginx\\.conf\\'" . nginx-mode)))
