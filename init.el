@@ -101,6 +101,11 @@ locate PACKAGE."
 (define-key key-translation-map (kbd "DEL") (kbd "C-h"))
 (define-key key-translation-map (kbd "M-DEL") (kbd "M-h"))
 
+;; Switch option and command in osx
+(when (and (eq system-type 'darwin) (eq window-system 'ns))
+   (setq ns-command-modifier (quote meta))
+   (setq ns-alternate-modifier (quote super)))
+
 ;; Set C-a to back to indentation or beginning
 (defun back-to-indentation-or-beginning ()
   (interactive)
